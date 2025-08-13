@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+            overflow: hidden;
+            background-color: #070707;
+            color: white;
+        }
+
+        /* Transparent Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000; /* Ensure it stays on top */
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #ff6700; /* Change color on hover */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 300vh;
+            background-image: url('background-image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .photo-container {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            height: 100vh;
+            perspective: 1000px;
+            overflow: hidden;
+        }
+
+        .photo-card {
+            width: 32%;
+            height: 80vh;
+            background-color: #f3f3f3;
+            transition: transform 0.8s, width 0.5s ease, height 0.5s ease;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+            margin: 10px;
+            margin-top: 130px;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .photo-card .front, .photo-card .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+        }
+
+        .photo-card .front {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .photo-card .front p {
+    position: absolute;
+    z-index: 2;
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between image and text */
+}
+
+.galaxy-image {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px; /* Adjust the size as needed */
+    border-radius: 50%; /* Optional: Makes the image circular */
+    object-fit: cover; /* Ensures the image fits well */
+}
+
+        .photo-card .back {
+            background-color: #fff;
+            transform: rotateY(180deg);
+            padding: 20px;
+            text-align: center;
+            overflow: hidden; /* Hide scrollbar */
+        }
+
+        .photo-card .back h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .photo-card .back p {
+            font-size: 18px;
+            color: #555;
+            overflow-y: auto; /* Allow scrolling within the text */
+            max-height: 90%; /* Limit height to prevent overflow */
+            padding-right: 10px; /* Add padding to avoid text touching the edge */
+        }
+        .photo-card .back {
+    background-color: #fff;
+    transform: rotateY(180deg);
+    padding: 20px;
+    text-align: left; /* Align text to the left */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-content {
+    display: flex;
+    align-items: flex-start; /* Align image and text at the top */
+    gap: 20px; /* Space between image and text */
+    max-width: 90%; /* Limit width for better readability */
+}
+
+.back-image {
+    width: 150px; /* Adjust image width */
+    height: 150px; /* Adjust image height */
+    border-radius: 10px; /* Optional: Rounded corners */
+    object-fit: cover; /* Ensure the image fits well */
+    border: 2px solid #ddd; /* Optional: Add a border */
+}
+
+.back-text {
+    flex: 1; /* Allow text to take remaining space */
+    overflow-y: auto; /* Enable scrolling for long text */
+    max-height: 80vh; /* Limit height to prevent overflow */
+}
+
+.back-text h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.back-text p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6; /* Improve readability */
+}
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .settings-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #333;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            display: none;
+        }
+
+        .settings-panel label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 14px;
+        }
+
+        .settings-panel select {
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Transparent Navbar -->
+<nav class="navbar">
+    <div class="logo">Cosmic Journey</div>
+    <div class="nav-links">
+        <a href="WELCOME.html">Home</a>
+        <a href="pluto.html">Planet<a>
+        <a href="MISSION.html">Mission</a>
+        <a href="PHENOMENA.html">Phenomena</a>
+        <a href="QUIZ.html">Quiz</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="photo-container">
+        <div class="photo-card" id="photo1" onclick="flipCard(this)">
+            <div class="front">
+                <p>Galaxy</p>
+                <video autoplay muted loop>
+                    <source src="images/galaxy.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="back">
+                <div class="back-content">
+                    <img src="images/galaxy13.jpeg" alt="Galaxy Image" class="back-image">
+                    <div class="back-text">
+                        <h2>Galaxy</h2>
+                        <p>
+                            Millions of galaxies have been catalogued, but only a few have well-established names, such as the Andromeda Galaxy, the Magellanic Clouds, the Whirlpool Galaxy, and the Sombrero Galaxy. Astronomers work with numbers from certain catalogues, such as the Messier catalogue, the NGC (New General Catalogue), the IC (Index Catalogue), the CGCG (Catalogue of Galaxies and of Clusters of Galaxies), the MCG (Morphological Catalogue of Galaxies), the UGC (Uppsala General Catalogue of Galaxies), and the PGC (Catalogue of Principal Galaxies, also known as LEDA). All the well-known galaxies appear in one or more of these catalogues but each time under a different number. For example, Messier 109 (or "M109") is a spiral galaxy having the number 109 in the catalogue of Messier. It also has the designations NGC 3992, UGC 6937, CGCG 269–023, MCG +09-20-044, and PGC 37617 (or LEDA 37617), among others.[20] Millions of fainter galaxies are known by their identifiers in sky surveys such as the Sloan Digital Sky Survey.[21]
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="photo-card" id="photo2" onclick="flipCard(this)">
+            <div class="front">
+                <p>Nebula</p>
+                <video autoplay muted loop>
+                    <source src="images/star1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="back">
+                <div class="back-content">
+                    <img src="images/nebula.jpeg" alt="Galaxy Image" class="back-image">
+                    <div class="back-text">
+                <h2>Nebula</h2>
+                <p>
+                    For other uses, see Nebula (disambiguation). True color image of the Trifid Nebula, showing complex gas and plasma structure. A nebula is a distinct luminescent part of interstellar medium, which can consist of ionized, neutral, or molecular hydrogen and also cosmic dust. Nebulae are often star-forming regions, such as in the Pillars of Creation in the Eagle Nebula. In these regions, the formations of gas, dust, and other materials "clump" together to form denser regions, which attract further matter and eventually become dense enough to form stars. The remaining material is then thought to form planets and other planetary system objects. Most nebulae are of vast size; some are hundreds of light-years in diameter. A nebula that is visible to the human eye from Earth would appear larger, but no brighter, from close by.[6] The Orion Nebula, the brightest nebula in the sky and occupying an area twice the angular diameter of the full Moon, can be viewed with the naked eye but was missed by early astronomers.[7] Although denser than the space surrounding them, most nebulae are far less dense than any vacuum created on Earth (105 to 107 molecules per cubic centimeter) a nebular cloud the size of the Earth would have a total mass of only a few kilograms. Earth's air has a density of approximately 1019 molecules per cubic centimeter; by contrast, the densest nebulae can have densities of 104 molecules per cubic centimeter. Many nebulae are visible due to fluorescence caused by embedded hot stars, while others are so diffused that they can be detected only with long exposures and special filters. Some nebulae are variably illuminated by T Tauri variable stars. Originally, the term "nebula" was used to describe any diffused astronomical object, including galaxies beyond the Milky Way. The Andromeda Galaxy, for instance, was once referred to as the Andromeda Nebula (and spiral galaxies in general as "spiral nebulae") before the true nature of galaxies was confirmed in the early 20th century by Vesto Slipher, Edwin Hubble, and others. Edwin Hubble discovered that most nebulae are associated with stars and illuminated by starlight. He also helped categorize nebulae based on the type of light spectra they produced. Observational history Around 150 AD, Ptolemy recorded, in books VII–VIII of his Almagest, five stars that appeared nebulous. He also noted a region of nebulosity between the constellations Ursa Major and Leo that was not associated with any star.[9] The first true nebula, as distinct from a star cluster, was mentioned by the Muslim Persian astronomer Abd al-Rahman al-Sufi in his Book of Fixed Stars (964).[10] He noted "a little cloud" where the Andromeda Galaxy is located.[11] He also cataloged the Omicron Velorum star cluster as a "nebulous star" and other nebulous objects, such as Brocchi's Cluster.[10] The supernovas that created the Crab Nebula, SN 1054, was observed by Arabic and Chinese astronomers in 1054.[12][13] In 1610, Nicolas-Claude Fabri de Peiresc discovered the Orion Nebula using a telescope. This nebula was also observed by Johann Baptist Cysat in 1618. However, the first detailed study of the Orion Nebula was not performed until 1659 by Christiaan Huygens, who also believed he was the first person to discover this nebulosity. In 1715, Edmond Halley published a list of six nebulae. [14] This number steadily increased during the century, with Jean-Philippe de Cheseaux compiling a list of 20 (including eight not previously known) in 1746. From 1751 to 1753, Nicolas-Louis de Lacaille cataloged 42 nebulae from the Cape of Good Hope, most of which were previously unknown. Charles Messier then compiled a catalog of 103 "nebulae" (now called Messier objects, which included what are now known to be galaxies) by 1781; his interest was detecting comets, and these were objects that might be mistaken for them. The number of nebulae was then greatly increased by the efforts of William Herschel and his sister, Caroline Herschel. Their Catalogue of One Thousand New Nebulae and Clusters of Stars[16] was published in 1786. A second catalog of a thousand was published in 1789, and the third and final catalog of 510 appeared in 1802. During much of their work, William Herschel believed that these nebulae were merely unresolved clusters of stars. In 1790, however, he discovered a star surrounded by nebulosity and concluded that this was a true nebulosity rather than a more distant cluster. Beginning in 1864, William Huggins examined the spectra of about 70 nebulae. He found that roughly a third of them had the emission spectrum of a gas. The rest showed a continuous spectrum and were thus thought to consist of a mass of stars.[17][18] A third category was added in 1912 when Vesto Slipher showed that the spectrum of the nebula that surrounded the star Merope matched the spectra of the Pleiades open cluster. Thus, the nebula radiates by reflected star light. In 1923, following the Great Debate, it became clear that many "nebulae" were in fact galaxies far from the Milky Way. Slipher and Edwin Hubble continued to collect the spectra from many different nebulae, finding 29 that showed emission spectra and 33 that had the continuous spectra of star light.[18] In 1922, Hubble announced that nearly all nebulae are associated with stars and that their illumination comes from star light. He also discovered that the emission spectrum nebulae are nearly always associated with stars having spectral classifications of B or hotter (including all O-type main sequence stars), while nebulae with continuous spectra appear with cooler stars.[20] Both Hubble and Henry Norris Russell concluded that the nebulae surrounding the hotter stars are transformed in some manner.
+                </p>
+            </div>
+        </div>
+    </div>
+        </div>
+
+        <div class="photo-card" id="photo3" onclick="flipCard(this)">
+            <div class="front">
+                <p>Black Hole</p>
+                <video autoplay muted loop>
+                    <source src="images/blackhole.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="back">
+                <div class="back-content">
+                    <img src="images/black hole1.jpg" alt="Galaxy Image" class="back-image">
+                    <div class="back-text">
+                <h2>Black Hole</h2>
+                <p>
+                    For other uses, see Black hole (disambiguation). Blackness of space with black marked as centre of donut of orange and red gases Composite image of the core region of Messier 87 taken at radio wavelengths showing glowing gas surrounding a (supermassive) black hole, .[1] Animated simulation of a Schwarzschild black hole with a galaxy passing behind. Around the time of alignment, extreme gravitational lensing of the galaxy is observed. A black hole is a massive, compact astronomical object so dense that its gravity prevents prevents anything from escaping, even light. Albert Einstein's theory of general relativity predicts that a sufficiently compact mass will form a black hole.[2] The boundary of no escape is called the event horizon. A black hole has a great effect on the fate and circumstances of an object crossing it, but has no locally detectable features according to general relativity.[3] In many ways, a black hole acts like an ideal black body, as it reflects no light.[4][5] Quantum field theory in curved spacetime predicts that event horizons emit Hawking radiation, with the same spectrum as a black body of a temperature inversely proportional to its mass. This temperature is of the order of billionths of a kelvin for stellar black holes, making it essentially impossible to observe directly. Objects whose gravitational fields are too strong for light to escape were first considered in the 18th century by John Michell and Pierre-Simon Laplace. In 1916, Karl Schwarzschild found the first modern solution of general relativity that would characterise a black hole. Due to his influential research, the Schwarzschild metric is named after him. David Finkelstein, in 1958, first published the interpretation of "black hole" as a region of space from which nothing can escape. Black holes were long considered a mathematical curiosity; it was not until the 1960s that theoretical work showed they were a generic prediction of general relativity. The discovery of neutron stars by Jocelyn Bell Burnell in 1967 sparked interest in gravitationally collapsed compact objects as a possible astrophysical reality. The first black hole known was Cygnus X-1, identified by several researchers independently in 1971.[6][7] Black holes of stellar mass form when massive stars collapse at the end of their life cycle. After a black hole has formed, it can grow by absorbing mass from its surroundings. Supermassive black holes of millions of solar masses (M☉) may form by absorbing other stars and merging with other black holes, or via direct collapse of gas clouds. There is consensus that supermassive black holes exist in the centres of most galaxies. The presence of a black hole can be inferred through its interaction with other matter and with electromagnetic radiation such as visible light. Any matter that falls toward a black hole can form an external accretion disk heated by friction, forming quasars, some of the brightest objects in the universe. Stars passing too close to a supermassive black hole can be shredded into streamers that shine very brightly before being "swallowed."[8] If other stars are orbiting a black hole, their orbits can be used to determine the black hole's mass and location. Such observations can be used to exclude possible alternatives such as neutron stars. In this way, astronomers have identified numerous stellar black hole candidates in binary systems and established that the radio source known as Sagittarius A*, at the core of the Milky Way galaxy, contains a supermassive black hole of about 4.3 million solar masses. The idea of a body so big that even light could not escape was briefly proposed by English astronomical pioneer and clergyman John Michell and independently by French scientist Pierre-Simon Laplace. Both scholars proposed very large stars rather than the modern model of stars with extraordinary density.[9] Michell's idea, in a short part of a letter published in 1784, calculated that a star with the same density but 500 times the radius of the sun would not let any emitted light escape; the surface escape velocity would exceed the speed of light. Michell correctly noted that such supermassive but non-radiating bodies might be detectable through their gravitational effects on nearby visible bodies.[9][10][11] In 1796, Laplace mentioned that a star could be invisible if it were sufficiently large while speculating on the origin of the Solar System in his book Exposition du Système du Monde. Franz Xaver von Zach asked Laplace for a mathematical analysis, which Laplace provided and published in journal edited by von Zach.[9] Scholars of the time were initially excited by the proposal that giant but invisible 'dark stars' might be hiding in plain view, but enthusiasm dampened when the wavelike nature of light became apparent in the early nineteenth century,[12] as if light were a wave rather than a particle, it was unclear what, if any, influence gravity would have on escaping light waves.[9][11]
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+<div class="settings-panel" id="settingsPanel">
+    <label for="text-size">Text Size</label>
+    <select id="text-size" onchange="updateSettings()">
+        <option value="small">Small</option>
+        <option value="standard" selected>Standard</option>
+        <option value="large">Large</option>
+    </select>
+
+    <label for="width">Width</label>
+    <select id="width" onchange="updateSettings()">
+        <option value="standard">Standard</option>
+        <option value="wide">Wide</option>
+    </select>
+
+    <label for="color">Color Mode</label>
+    <select id="color" onchange="updateSettings()">
+        <option value="automatic" selected>Automatic</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</div>
+
+<script>
+    function flipCard(card) {
+        card.classList.add('flipped');
+        setTimeout(function() {
+            document.querySelectorAll('.photo-card').forEach(function(otherCard) {
+                if (otherCard !== card) {
+                    otherCard.style.display = 'none';
+                }
+            });
+            card.style.width = '80%';
+            card.style.height = '90vh';
+            document.getElementById("settingsPanel").style.display = "block";
+        }, 800);
+    }
+
+    function updateSettings() {
+        const textSize = document.getElementById("text-size").value;
+        const width = document.getElementById("width").value;
+        const color = document.getElementById("color").value;
+        
+        const card = document.querySelector(".photo-card.flipped");
+        if (!card) return;
+        const textElements = card.querySelectorAll("h2, p");
+        textElements.forEach(el => {
+            el.style.fontSize = textSize === "small" ? "16px" : textSize === "large" ? "24px" : "20px";
+        });
+
+        card.style.width = width === "wide" ? "90%" : "80%";
+        document.body.style.backgroundColor = color === "light" ? "#fff" : "#222";
+        document.body.style.color = color === "light" ? "#000" : "white";
+    }
+</script>
+</body>
+</html>

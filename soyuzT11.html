@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Mission Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+        
+        h1 {
+            margin-bottom: 50px;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+            font-weight: bold;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        h3 {
+            color: #a8e6cf; /* Cosmic Violet */
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .passport-photo {
+            width: 100%;
+            max-width: 170px;
+            height: auto;
+            object-fit: cover;
+            border: 2px solid #fff;
+            margin-top: 70px;
+            margin-right: 10px;
+        }
+        .photo-container {
+            text-align: center;
+        }
+        .photo-container span {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #f0f0f0; /* Light gray for name text */
+        }
+        .photo-container:hover span {
+            font-weight: bold;
+        }
+        .photo-container:hover .passport-photo {
+            transform: scale(1.05);
+            transition: transform 0.3s;
+        }
+        .photos-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+        .mission-details {
+            margin-top: 80px;
+        }
+        .mission-details p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .youtube-video {
+            margin-top: 70px;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+        }
+        /* Timeline Section */
+        .timeline {
+            margin-top: 70px;
+            margin-bottom: 70px;
+        }
+        .timeline h3 {
+            margin-bottom: 20px;
+        }
+        .timeline ul {
+            list-style: none;
+            padding: 0;
+        }
+        .timeline ul li {
+            padding: 10px;
+            border-left: 2px solid #2f80ed;
+            margin-bottom: 20px;
+        }
+        .timeline ul li span {
+            font-weight: bold;
+            color: #56ccf2;
+        }
+        /* Contact Section */
+        .contact {
+            background-color: #2f80ed;
+            padding: 20px;
+            margin-top: 80px;
+        }
+        .contact h3, .contact p {
+            color: white;
+        }
+        .contact-form {
+            background-color: #56ccf2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        footer p {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Title Section -->
+    <h1 class="text-center">Space Mission Overview</h1>
+
+    <!-- Mission Information Section -->
+    <div class="mission-details">
+        <h3>Mission Details</h3>
+        <p>
+            1. Launch Date:
+            April 3, 1984
+            2. Mission Duration:
+            7 days, 21 hours, 40 minutes
+            3. Launch Vehicle:
+            Soyuz-U
+            The Soyuz-U rocket launched the Soyuz T-11 spacecraft into space from the Baikonur Cosmodrome in Kazakhstan.
+            4. Mission Objectives:
+            The primary objectives of the Soyuz T-11 mission were:
+            
+            To transport a crew to the Salyut 7 space station.
+            To conduct scientific experiments in space, with a particular focus on material science, Earth observation, and biomedical studies.
+            International Cooperation: This mission was notable for the collaboration between India and the Soviet Union, marking a milestone in international space cooperation.
+            5. Spacecraft:
+            Soyuz T-11: This was a variant of the Soyuz spacecraft, designed to ferry cosmonauts to space stations like Salyut 7. It carried three crew members to the Salyut 7 station and docked successfully with it.
+            6. Space Station:
+            Salyut 7: The destination for the Soyuz T-11 mission. Salyut 7 was the last of the Soviet Union’s Salyut space stations and was used primarily for scientific research and testing space technologies.
+            Soyuz T-11 Crew:
+            Yuri Malyshev (Soviet Union) – Commander
+            
+            Role: Malyshev was the commander of the Soyuz T-11 mission, responsible for piloting the spacecraft and ensuring a successful docking with the Salyut 7 station.
+            Background: Malyshev was a veteran Soviet cosmonaut with experience in long-duration spaceflight.
+            Gennady Strekalov (Soviet Union) – Flight Engineer
+            
+            Role: Strekalov was responsible for technical and engineering tasks aboard Soyuz T-11 and the Salyut 7 space station.
+  </p>
+    </div>
+
+    <!-- YouTube Video Section -->
+    <div class="youtube-video">
+        <h3>Watch the Mission Trailer</h3>
+        <iframe src="https://www.youtube.com/embed/LkW-CCFasdU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Space Mission. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

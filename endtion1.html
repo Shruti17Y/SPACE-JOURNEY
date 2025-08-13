@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Mission Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+        
+        h1 {
+            margin-bottom: 50px;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+            font-weight: bold;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        h3 {
+            color: #a8e6cf; /* Cosmic Violet */
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .passport-photo {
+            
+            width: 200px;
+            height:200px;
+            object-fit: cover;
+            border: 2px solid #fff;
+            margin-top: 70px;
+            margin-right: 10px;
+        }
+        .photo-container {
+            text-align: center;
+        }
+        .photo-container span {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #f0f0f0; /* Light gray for name text */
+        }
+        .photo-container:hover span {
+            font-weight: bold;
+        }
+        .photo-container:hover .passport-photo {
+            transform: scale(1.05);
+            transition: transform 0.3s;
+        }
+        .photos-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+        .mission-details {
+            margin-top: 80px;
+        }
+        .mission-details p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .youtube-video {
+            margin-top: 70px;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+        }
+        /* Timeline Section */
+        .timeline {
+            margin-top: 70px;
+            margin-bottom: 70px;
+        }
+        .timeline h3 {
+            margin-bottom: 20px;
+        }
+        .timeline ul {
+            list-style: none;
+            padding: 0;
+        }
+        .timeline ul li {
+            padding: 10px;
+            border-left: 2px solid #2f80ed;
+            margin-bottom: 20px;
+        }
+        .timeline ul li span {
+            font-weight: bold;
+            color: #56ccf2;
+        }
+        /* Contact Section */
+        .contact {
+            background-color: #2f80ed;
+            padding: 20px;
+            margin-top: 80px;
+        }
+        .contact h3, .contact p {
+            color: white;
+        }
+        .contact-form {
+            background-color: #56ccf2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        footer p {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Title Section -->
+    <h1 class="text-center">Space Mission Overview</h1>
+
+    <!-- Mission Information Section -->
+    <div class="mission-details">
+        <h3>Mission Details</h3>
+        <p>
+            1. Launch Date:
+            October 31, 2000
+            2. Mission Duration:
+            136 days, 17 hours, 9 minutes
+            The crew remained aboard the ISS from November 2, 2000 (arrival date) until March 21, 2001.
+            3. Launch Vehicle:
+            Soyuz TM-31
+            The crew was launched aboard a Russian Soyuz spacecraft from the Baikonur Cosmodrome in Kazakhstan.
+            4. Mission Objectives:
+            The primary objective of Expedition 1 was to make the ISS operational, setting up essential systems, conducting early scientific research, and establishing continuous human presence in low Earth orbit. Specific objectives included:
+            
+            Activation of Life Support Systems: Setting up and activating critical systems on the ISS, including life support, communications, and power systems.
+            Space Station Configuration: Installing equipment, organizing the interior of the station, and preparing for future missions.
+            Scientific Research: Performing basic scientific research in microgravity to assess the station’s capabilities for more complex future experiments.
+            Maintenance and Assembly Tasks: The crew conducted routine maintenance and began preparing the ISS for the addition of new modules.
+            5. Spacecraft:
+            Soyuz TM-31: This Russian spacecraft was used to transport the crew to the ISS. It remained docked to the station throughout the mission as a return vehicle in case of emergencies.
+            Space Shuttle Endeavour (STS-97): During the mission, the U.S. Space Shuttle Endeavour visited the ISS (December 2000) to deliver and install solar arrays, marking a significant upgrade to the station’s power systems.
+            Expedition 1 Crew:
+            William M. Shepherd (NASA) – Commander
+            
+            Role: Shepherd was the first commander of the ISS. He led the mission and was responsible for managing all operations aboard the station.
+            Background: Shepherd is a U.S. Navy SEAL and NASA astronaut, selected in the 1984 NASA group. He flew on several Space Shuttle missions before becoming the commander of Expedition 1.
+            Sergei Krikalev (Roscosmos) – Flight Engineer 1
+            
+            Role: As a flight engineer, Krikalev handled technical and engineering duties, including systems maintenance and overseeing the Russian segments of the ISS.
+            Background: Krikalev is a highly experienced Russian cosmonaut. He has flown on several missions, including Mir and Space Shuttle flights. He became known as the "last citizen of the Soviet Union" for his extended stay aboard Mir during the collapse of the USSR.
+            Yuri Gidzenko (Roscosmos) – Flight Engineer 2 / Soyuz Commander
+            
+            Role: Gidzenko piloted the Soyuz TM-31 spacecraft that transported the crew to the ISS. He was responsible for the Soyuz during launch, docking, and reentry, as well as engineering tasks on the ISS.
+            Background: Gidzenko is an experienced Russian cosmonaut and pilot. He had previously flown on the Russian space station Mir.    
+        </p>
+    </div>
+
+    <!-- Photos Section -->
+    <div class="photos-container">
+        <div class="photo-container">
+                            <img src="images/ex-1.jpeg" alt="Astronaut 1" class="passport-photo">
+            <span>Sergei Karikalev</span>
+        </div>
+        <div class="photo-container">
+                            <img src="images/ex-11.jpeg" alt="Astronaut 2" class="passport-photo">
+            <span>Yuri Gidzenko</span>
+        </div>
+        <div class="photo-container">
+                            <img src="images/ex-111.jpeg" alt="Astronaut 3" class="passport-photo">
+            <span>William Shepherd</span>
+        </div>
+        
+    </div>
+
+    <!-- YouTube Video Section -->
+    <div class="youtube-video">
+        <h3>Watch the Mission Trailer</h3>
+        <iframe src="https://www.youtube.com/embed/3OpDe4v9MbI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Space Mission. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

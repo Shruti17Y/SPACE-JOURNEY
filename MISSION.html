@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Missions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+       body {
+    background: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 300vh; /* Adjusted height to enable scrolling */
+    overflow:hidden; /* Allows scrolling */
+}
+.footer {
+    background: #111;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer h5 {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ff6700;
+}
+
+.footer p {
+    font-size: 14px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #ff6700;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 24px;
+}
+
+.social-icons a {
+    color: white;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ff6700;
+}
+
+.footer-text {
+    font-size: 14px;
+    margin-top: 20px;
+    opacity: 0.7;
+}
+
+
+        .slider {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation-duration: 24s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        /* First Slide */
+        .slide:nth-child(1) {
+            animation-name: slide1;
+        }
+
+        @keyframes slide1 {
+            0%, 20% { opacity: 1; transform: scale(1); }
+            30% { transform: scale(0.4); }
+            40% { transform: translateX(-60%) scale(0.4); opacity: 1; }
+            45% { opacity: 0; }
+        }
+
+        /* Second Slide */
+        .slide:nth-child(2) {
+            animation-name: slide2;
+        }
+
+        @keyframes slide2 {
+            0%, 40% { opacity: 0; transform: translateX(60%) scale(0.4); }
+            45% { opacity: 1; transform: translateX(0) scale(0.4); }
+            55% { transform: scale(1); }
+            70% { opacity: 1; }
+            75% { transform: scale(0.4); }
+            85% { transform: translateX(-60%) scale(0.4); opacity: 1; }
+            90% { opacity: 0; }
+        }
+
+        /* Third Slide */
+        .slide:nth-child(3) {
+            animation-name: slide3;
+        }
+
+        @keyframes slide3 {
+            0%, 85% { opacity: 0; transform: translateX(60%) scale(0.4); }
+            90% { opacity: 1; transform: translateX(0) scale(0.4); }
+            100% { transform: scale(1); opacity: 1; }
+            
+        }
+
+        /* Text Content */
+        .content-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            opacity: 0;
+            animation-duration: 24s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        /* First Text */
+        .content-slide:nth-child(4) {
+            animation-name: slide1;
+        }
+
+        /* Second Text */
+        .content-slide:nth-child(5) {
+            animation-name: slide2;
+        }
+
+        /* Third Text */
+        .content-slide:nth-child(6) {
+            animation-name: slide3;
+        }
+
+        .left-text {
+            font-size: 20px;
+            padding-left: 20px;
+            max-width: 25%;
+            font-weight: 300;
+        }
+
+        .center-text {
+            font-size: 64px;
+            font-weight: bold;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .explore-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .btn-explore {
+            font-size: 20px;
+            padding: 10px 20px;
+        }
+
+        /* Card Section */
+        .cards-section {
+            padding: 100px;
+            background-color: #1a1a1a;
+            min-height: 100vh;
+        }
+
+        .card {
+            background-color: #333;
+            color: white;
+            border: none;
+            margin-bottom:30px;
+            transition: transform 0.3s ease-in-out, 0.3s ease-in-out; /* Smooth transition */
+        }
+        .card:hover {
+    transform: scale(1.05); /* Slightly enlarges the card */
+        }
+
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .btn-know-more {
+            background-color:white;
+            border: none;
+        }
+
+        
+
+        /* Video Styling */
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /*footer*/
+        .footer {
+    background: #111;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer h5 {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ff6700;
+}
+
+.footer p {
+    font-size: 14px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #ff6700;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 24px;
+}
+
+.social-icons a {
+    color: white;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ff6700;
+}
+
+.footer-text {
+    font-size: 14px;
+    margin-top: 20px;
+    opacity: 0.7;
+}
+/*navbar*/
+        .navbar {
+    background: transparent !important;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+    color: white !important;
+    font-weight: bold;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ff6700 !important; /* Change color on hover */
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Cosmic Journey</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="WELCOME.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pluto.html">Planet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#cards-section">Missions</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="PHENOMENA.html">Phenomena</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="QUIZ.html">Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="slider">
+        <!-- Slide 1 with video background -->
+        <div class="slide">
+                            <video src="images/video1.mp4" autoplay muted loop playsinline></video>
+        </div>
+
+        <!-- Slide 2 with video background -->
+        <div class="slide">
+                            <video src="images/video2.mp4" autoplay muted loop playsinline></video>
+        </div>
+
+        <!-- Slide 3 with video background -->
+        <div class="slide">
+                            <video src="images/mars.mp4" autoplay muted loop playsinline></video>
+        </div>
+
+        <!-- Text and Button Overlay -->
+        <div class="content-slide">
+            <div class="left-text">
+                <p>Explore the Moon</p>
+            </div>
+            <div class="center-text">
+                <p>MOON MISSION</p>
+            </div>
+        </div>
+
+        <div class="content-slide">
+            <div class="left-text">
+                <p>Venture to Mars</p>
+            </div>
+            <div class="center-text">
+                <p>MARS MISSION</p>
+            </div>
+        </div>
+
+        <div class="content-slide">
+            <div class="left-text">
+                <p>Discover the Stars</p>
+            </div>
+            <div class="center-text">
+                <p> Mission EXPLORATION</p>
+            </div>
+        </div>
+
+        <div class="explore-btn">
+            <button class="btn btn-primary btn-explore" onclick="scrollToCards()">Explore</button>
+        </div>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="cards-section" id="cards-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/mangalyaan.jpg" class="card-img-top" alt="Moon Mission">
+                        <div class="card-body">
+                            <h5 class="card-title">Mangalyaan</h5>
+                            <p class="card-text">India's first Mars mission, launched in 2013.</p>
+                            <a href="mangalyaan.html" class="btn btn-know-more">Know More</a>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/apollo-11.jpg" class="card-img-top" alt="Star Exploration">
+                        <div class="card-body">
+                            <h5 class="card-title">Apollo11</h5>
+                            <p class="card-text">The first mission to land humans on the Moon.</p>
+                            <a href="apollo-11.html" class="btn btn-know-more">Know More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/apollo-17.jpg" class="card-img-top" alt="Star Exploration">
+                        <div class="card-body">
+                            <h5 class="card-title">Apollo17</h5>
+                            <p class="card-text">The last Apollo mission to the Moon, 1972.</p>
+                            <a href="apollo-17.html" class="btn btn-know-more">Know More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/skylab.jpg" class="card-img-top" alt="Skylab Missions">
+                        <div class="card-body">
+                            <h5 class="card-title">Skylab 4(SL-4)</h5>
+                            <p class="card-text">Skylab mission (84 days), studied the Sun and Earth</p>
+                            <a href="skylab.html" class="btn btn-know-more">Know More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/expen.jpg" class="card-img-top" alt="Expedition 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Expedition 1</h5>
+                            <p class="card-text">The first crewed mission to the ISS, launched in 2000.</p>
+                            <a href="endtion1.html" class="btn btn-know-more">Know More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/Soyuz T-11.jpg" class="card-img-top" alt="Soyuz T-11">
+                        <div class="card-body">
+                            <h5 class="card-title">Soyuz T-11</h5>
+                            <p class="card-text">First Indian in space, Rakesh Sharma, 1984.</p>
+                            <a href="soyuzT11.html" class="btn btn-know-more">Know More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function scrollToCards() {
+            // Enable scrolling by setting overflow to auto
+            document.body.style.overflow = 'auto';
+
+            // Smooth scroll to the cards section
+            document.getElementById('cards-section').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+    </script>
+</body>
+</html>

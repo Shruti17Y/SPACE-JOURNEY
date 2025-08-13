@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Video Hover Effect with Parallax Background</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: black;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1;
+    }
+
+    .circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      transition: all 0.6s ease-in-out;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      border: 3px solid white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .circle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+    }
+
+    .circle video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .circle.fullscreen {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      border: none;
+      box-shadow: none;
+    }
+
+    .circle.fullscreen video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 10;
+      font-size: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      opacity: 0;
+      animation: fadeInText 1.5s ease-in-out forwards;
+    }
+
+    .welcome-text span {
+      font-size: 15rem;
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .cosmic-journey {
+      font-size: 3rem;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeInJourney 1.5s ease-in-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes fadeInJourney {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .scroll-section {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: transform 0.6s ease-in-out;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed; /* This enables the parallax effect */
+    }
+
+    .content-container {
+      display: flex;
+      width: 90%;
+      max-width: 1200px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .text-content {
+      flex: 1;
+      text-align: left;
+      margin-right: 20px;
+    }
+
+    .text-content h2 {
+      font-size: 3rem;
+    }
+
+    .text-content p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .explore-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #fff;
+      color: black;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .explore-button:hover {
+      background-color: #444;
+      color: white;
+    }
+
+    .image-content {
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .image-content img {
+      max-width: 100%;
+      border-radius: 10px;
+      transition: all 0.6s ease;
+    }
+
+    .image-content:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .fullscreen-image img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    .scrollable {
+      display: none;
+    }
+
+    /* Parallax background for each section */
+    #planetSection {
+      background-image: url('star1.jpg');
+    }
+
+    #missionSection {
+      background-image: url('star3.jpg');
+    }
+
+    #phenomenaSection {
+      background-image: url('star1.jpg');
+    }
+
+    #quizSection {
+      background-image: url('star3.jpg');
+    }
+
+    /* Fade-in animation for the scroll sections */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .scroll-section {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Footer Styles */
+    .footer {
+      background: #111;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer h5 {
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #ff6700;
+    }
+
+    .footer p {
+      font-size: 14px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links li {
+      margin-bottom: 0;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #ff6700;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      font-size: 24px;
+    }
+
+    .social-icons a {
+      color: white;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ff6700;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      margin-top: 20px;
+      opacity: 0.7;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .welcome-text span {
+        font-size: 8rem;
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+      .cosmic-journey {
+        font-size: 2rem;
+      }
+
+      .content-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .text-content {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .image-content img {
+        max-width: 80%;
+      }
+
+      .footer .footer-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Welcome Section with the Video and Hover Effect -->
+  <div class="container" id="welcomeSection">
+    <h1 class="welcome-text">
+      <span>W</span><span>E</span><span>L</span><span>C</span>
+      <div class="circle" id="expandVideo">
+                    <video src="images/spa1.mp4" muted autoplay loop></video>
+      </div>
+      <span>M</span><span>E</span>
+    </h1>
+    <div class="cosmic-journey">TO Cosmic Journey</div>
+  </div>
+
+  <!-- Scrollable Content Section with Parallax Backgrounds -->
+  <div class="scrollable" id="scrollContent">
+    <!-- Planets Section -->
+    <div class="scroll-section" id="planetSection">
+      <div class="content-container">
+        <div class="text-content">
+          <h2>Planets</h2>
+          <p>Explore the diverse and fascinating planets of our solar system, from the rocky landscapes of Mars to the gas giants like Jupiter.</p>
+          <a href="pluto.html" class="explore-button">Discover Planets</a>
+        </div>
+        <div class="image-content" id="spaceImage">
+                          <img src="images/planets.jpg" alt="Space Image">
+        </div>
+      </div>
+    </div>
+
+    <!-- Space Missions Section -->
+    <div class="scroll-section" id="missionSection">
+      <div class="content-container">
+        <div class="text-content">
+          <h2> Space Missions</h2>
+          <p>Learn about the missions that have shaped our understanding of the cosmos, from Apollo moon landings to Mars rovers and beyond.</p>
+          <a href="MISSION.html" class="explore-button">Explore Missions</a>
+        </div>
+        <div class="image-content" id="spaceImage">
+                          <img src="images/mission1.jpg" alt="Space Image">
+        </div>
+      </div>
+    </div>
+
+    <!-- Space Phenomena Section -->
+    <div class="scroll-section" id="phenomenaSection">
+      <div class="content-container">
+        <div class="text-content">
+          <h2>Space Phenomena</h2>
+          <p>Witness incredible space phenomena such as black holes, Galaxy,Nebula that challenge our understanding of physics.</p>
+          <a href="PHENOMENA.html" class="explore-button">Explore Phenomena</a>
+        </div>
+        <div class="image-content" id="spaceImage">
+                          <img src="images/galaxy1.jpg" alt="Space Image">
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="scroll-section" id="quizSection">
+      <div class="content-container">
+        <div class="text-content">
+          <h2>Quiz</h2>
+          <p>Are you ready to test your knowledge of space? Take our quiz and see how much you know about the universe!</p>
+          <a href="QUIZ.html" class="explore-button">Take the Quiz</a>
+        </div>
+        <div class="image-content" id="spaceImage">
+                          <img src="images/quiz.jpg" alt="Space Image">
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <!-- Logo & About -->
+        <div>
+          <h5>Cosmic Journey</h5>
+          <p>Exploring the universe, one mission at a time.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="WELCOME.html">Home</a></li>
+            <li><a href="pluto.html">Planets</a></li>
+            <li><a href="MISSION.html">Missions</a></li>
+            <li><a href="PHENOMENA.html">Phenomena</a></li>
+            <li><a href="QUIZ.html">Quiz</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div>
+          <h5>Follow Us</h5>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <p class="footer-text">&copy; 2025 Cosmic Journey. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Expand video on hover and show scrollable content
+    document.getElementById("expandVideo").addEventListener("mouseover", function() {
+      this.classList.add("fullscreen");
+      setTimeout(() => {
+        document.getElementById("welcomeSection").style.display = "none";
+        document.getElementById("scrollContent").style.display = "block";
+        document.body.style.overflowY = "auto";
+      }, 800);
+    });
+  </script>
+</body>
+</html>

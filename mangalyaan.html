@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Mission Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+        
+        h1 {
+            margin-bottom: 50px;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        h3 {
+            color: #a8e6cf; /* Cosmic Violet */
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .passport-photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid #fff;
+            margin-top: 70px;
+            margin-right: 10px;
+        }
+        .photo-container {
+            text-align: center;
+        }
+        .photo-container span {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #f0f0f0; /* Light gray for name text */
+        }
+        .photo-container:hover span {
+            font-weight: bold;
+        }
+        .photo-container:hover .passport-photo {
+            transform: scale(1.05);
+            transition: transform 0.3s;
+        }
+        .photos-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+        .mission-details {
+            margin-top: 80px;
+        }
+        .mission-details p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .youtube-video {
+            margin-top: 70px;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+        }
+        /* Timeline Section */
+        .timeline {
+            margin-top: 70px;
+            margin-bottom: 70px;
+        }
+        .timeline h3 {
+            margin-bottom: 20px;
+        }
+        .timeline ul {
+            list-style: none;
+            padding: 0;
+        }
+        .timeline ul li {
+            padding: 10px;
+            border-left: 2px solid #2f80ed;
+            margin-bottom: 20px;
+        }
+        .timeline ul li span {
+            font-weight: bold;
+            color: #56ccf2;
+        }
+        /* Contact Section */
+        .contact {
+            background-color: #2f80ed;
+            padding: 20px;
+            margin-top: 80px;
+        }
+        .contact h3, .contact p {
+            color: white;
+        }
+        .contact-form {
+            background-color: #56ccf2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        footer p {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Title Section -->
+    <h1 class="text-center">Space Mission Overview</h1>
+
+    <!-- Mission Information Section -->
+    <div class="mission-details">
+        <h3>Mission Details</h3>
+        <p>
+            Mangalyaan (Mars Orbiter Mission):
+        </p>
+Launch Date: November 5, 2013
+Launch Vehicle: PSLV-C25 (Polar Satellite Launch Vehicle)
+Mission Objective: To explore Mars and study its surface features, morphology, atmosphere, and mineralogy from orbit.
+Mission Duration: Initially intended to last six months, but the spacecraft far exceeded its expected lifespan, functioning for over seven years, until communication was lost in September 2022.
+Arrival at Mars: Mangalyaan successfully entered Mars' orbit on September 24, 2014.
+Achievements:
+It made India the first Asian country to reach Mars' orbit.
+Mangalyaan sent back important data, including high-resolution images of Mars' surface, helping scientists study the Martian atmosphere and weather patterns.
+It was one of the most cost-effective interplanetary missions ever, with a total cost of approximately $74 million USD.
+The spacecraft carried five scientific instruments, including:
+
+A Mars Color Camera (MCC) to capture images of Mars and its moons.
+A Methane Sensor for Mars (MSM) to detect methane in the Martian atmosphere, which is considered a possible indicator of life.
+A Thermal Infrared Imaging Spectrometer (TIS) to study surface composition and mineral distribution.
+Name: Mars Orbiter Mission (MOM), also known as Mangalyaan.
+Objective: To explore Mars' surface, atmosphere, mineralogy, and morphology.
+Cost: Around $74 million USD, making it one of the most economical space missions to Mars.
+Unique Achievement: India became the first nation to successfully reach Mars on its maiden attempt, a remarkable feat as only NASA, the Soviet Union, and the European Space Agency had previously done so.
+Instruments on Board:
+Mars Color Camera (MCC): Captured stunning images of Mars.
+Lyman Alpha Photometer (LAP): Studied the abundance of deuterium and hydrogen in the Martian upper atmosphere.
+Methane Sensor for Mars (MSM): Searched for methane, a potential indicator of life.
+Thermal Infrared Imaging Spectrometer (TIS): Analyzed Mars' surface composition.
+Mars Exospheric Neutral Composition Analyzer (MENCA): Measured neutral particles in the Martian atmosphere.
+    </div>
+
+    
+    
+    <!-- Photos Section -->
+    <div class="photos-container">
+        <div class="photo-container">
+                            <img src="images/Shubhanshu Shukla.jpeg" alt="Astronaut 1" class="passport-photo">
+            <span>Shubhanshu Shukla</span>
+        </div>
+        <div class="photo-container">
+                            <img src="images/Angad Pratap.jpeg" alt="Astronaut 2" class="passport-photo">
+            <span>Angad Pratap</span>
+        </div>
+        <div class="photo-container">
+                            <img src="images/Prashanth Nair.jpeg" alt="Astronaut 3" class="passport-photo">
+            <span>Prashanth Nair</span>
+        </div>
+        
+    </div>
+
+    <!-- YouTube Video Section -->
+    <div class="youtube-video">
+        <h3>Watch the Mission Trailer</h3>
+        <iframe src="https://www.youtube.com/embed/smRSEUT8yX0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Space Mission. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

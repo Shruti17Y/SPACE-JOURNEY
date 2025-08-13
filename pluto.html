@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planet Showcase</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Reset body styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and video background */
+        body {
+            background-color: #2b221f;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            padding: 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Behind content */
+        }
+
+        .text-section {
+            max-width: 40%;
+            z-index: 1; /* Ensure it's above the video */
+            text-align: left;
+        }
+
+        /* Custom fadeInText animation */
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title {
+            font-size: 5rem;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeInText 2s ease-in-out forwards;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInText 2s ease-in-out 0.5s forwards; /* Delayed start */
+        }
+
+        /* Next Button Style */
+        .next-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            text-decoration: none;
+            padding: 0;
+            opacity: 0;
+            animation: fadeInText 2s ease-in-out 1s forwards;
+        }
+
+        .next-btn:hover {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+
+        /* Previous Button Style */
+        .prev-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            text-decoration: none;
+            padding: 0;
+            opacity: 0;
+            animation: fadeInText 2s ease-in-out 1s forwards;
+           
+        }
+        .prev-btn:hover {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+
+        /* Transparent "Learn More" button */
+        .learn-more-btn {
+            padding: 12px 30px;
+            background-color: transparent;
+            border: 2px solid #ff5722;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInText 2s ease-in-out 1s forwards; /* Delayed start */
+        }
+
+        .learn-more-btn:hover {
+            background-color: rgba(255, 87, 34, 0.2);
+            border-color: #e64a19;
+            transform: scale(1.05);
+        }
+
+        /* Planet Image */
+        .planet-image {
+            width: 35%; /* Initial width */
+            filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.2));
+            animation: rotatePlanet 10s linear infinite;
+            transition: transform 1s ease, width 1s ease, right 1s ease;
+            position: absolute;
+            top: 2%; /* Center vertically */
+            right: 5%; /* Positioned on the right side of the screen */
+            transform: translateY(-50%); /* Center vertically */
+        }
+
+        @keyframes rotatePlanet {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Checkbox to trigger the expansion */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        input[type="checkbox"]:checked ~ .planet-image {
+            width: 50%;
+            left: 75%; /* Position it in the center horizontally */
+            top: -30%; /* Position it in the center vertically */
+            transform: translate(-50%, -50%) scale(1.2);
+            position: fixed;
+        }
+
+        input[type="checkbox"]:checked ~ .info-section {
+            display: block;
+        }
+
+        input[type="checkbox"]:checked ~ .text-section {
+            display: none;
+        }
+
+        /* Additional Information Section */
+        .info-section {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 5%; /* Adjust this to move it closer to the left side */
+            transform: translateY(-50%);
+            color: white;
+            z-index: 2; /* Keep the text above the background */
+            text-align: left;
+            background-color: transparent; /* Remove the box background */
+            border: none; /* Remove any border if present */
+            padding: 0; /* Remove padding around the text */
+        }
+
+        .info-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInText 2s ease-in-out forwards;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .info-section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInText 2s ease-in-out 0.5s forwards; /* Delayed start */
+        }
+        .navbar {
+    background: transparent !important;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+    color:white !important;
+    font-weight: bold;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ff6700 !important; /* Change color on hover */
+}
+        /* Transparent "return" button */
+        .learn-more-btn.return {
+            padding: 12px 30px;
+            background-color: transparent;
+            border: 2px solid #ff5722;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInText 2s ease-in-out 1s forwards; /* Delayed start */
+        }
+
+        .learn-more-btn.return:hover {
+            background-color: rgba(255, 87, 34, 0.2);
+            border-color: #e64a19;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Cosmic Journey</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="WELCOME.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pluto.html">Planet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="MISSION.html">Missions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="PHENOMENA.html">Phenomena</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="QUIZ.html">Quiz</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Background Video -->
+    <video id="bg-video" autoplay muted loop>
+        <source src="images/star1.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <!-- Checkbox to trigger CSS changes -->
+    <input type="checkbox" id="togglePlanet" />
+
+    <!-- Main Content -->
+    <div class="text-section">
+        <h1 class="title">Pluto</h1>
+        <p class="subtitle">Pluto, once considered the ninth planet, is now classified as a dwarf planet in the Kuiper Belt. It takes 248 Earth years to complete an orbit around the Sun. Pluto's surface is icy and rocky, with a thin atmosphere primarily made of nitrogen. It has five moons, with Charon being the largest, almost half Pluto’s size. In 2006, Pluto was reclassified as a dwarf planet due to its size and position. NASA’s New Horizons mission provided the first close-up images of Pluto in 2015, revealing its fascinating surface and moons.</p>
+        <label for="togglePlanet" class="learn-more-btn">Learn More</label>
+    </div>
+
+    <!-- Planet Image -->
+    <img src="images/pluto1.png" class="planet-image" alt="Planet">
+
+    <!-- Additional Information Section -->
+    <div class="info-section">
+        <h2>About Pluto</h2>
+        <p>
+            Dwarf planet in the Kuiper Belt.<br>
+Orbit: Takes 248 Earth years to orbit the Sun.<br>
+Day length: About 6.4 Earth days for one full rotation.<br>
+Surface: Icy, rocky with nitrogen, methane, and carbon monoxide ice.<br>
+Atmosphere: Thin, mainly nitrogen with traces of methane.<br>
+Moons: 5 known moons, the largest is Charon.<br>
+Classification: Reclassified from planet to dwarf planet in 2006.<br>
+Exploration: Visited by NASA’s New Horizons in 2015.<br>
+        </p>
+        <!-- Modified "Return" button without border, box, and left alignment -->
+        <label for="togglePlanet" class="learn-more-btn return">Return</label>
+    </div>
+
+    <!-- "Previous" Button with Left Arrow Icon -->
+    <a href="nptune.html" class="prev-btn">
+        <i class="bi bi-arrow-left"></i> <!-- Bootstrap left arrow icon -->
+    </a>
+
+    <!-- "Next" Button with Right Arrow Icon -->
+    <a href="mercury.html" class="next-btn">
+        <i class="bi bi-arrow-right"></i> <!-- Bootstrap right arrow icon -->
+    </a>
+
+</body>
+</html>

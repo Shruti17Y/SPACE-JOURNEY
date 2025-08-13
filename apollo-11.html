@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Mission Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+        
+        h1 {
+            margin-bottom: 50px;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3rem;
+            font-weight: bold;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        h3 {
+            color: #a8e6cf; /* Cosmic Violet */
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .passport-photo {
+          
+            width: 200px;
+            height:200px;
+            object-fit: cover;
+            border: 2px solid #fff;
+            margin-top: 70px;
+            margin-right: 10px;
+        }
+        .photo-container {
+            text-align: center;
+        }
+        .photo-container span {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #f0f0f0; /* Light gray for name text */
+        }
+        .photo-container:hover span {
+            font-weight: bold;
+        }
+        .photo-container:hover .passport-photo {
+            transform: scale(1.05);
+            transition: transform 0.3s;
+        }
+        .photos-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+        .mission-details {
+            margin-top: 80px;
+        }
+        .mission-details p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .youtube-video {
+            margin-top: 70px;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+        }
+        /* Timeline Section */
+        .timeline {
+            margin-top: 70px;
+            margin-bottom: 70px;
+        }
+        .timeline h3 {
+            margin-bottom: 20px;
+        }
+        .timeline ul {
+            list-style: none;
+            padding: 0;
+        }
+        .timeline ul li {
+            padding: 10px;
+            border-left: 2px solid #2f80ed;
+            margin-bottom: 20px;
+        }
+        .timeline ul li span {
+            font-weight: bold;
+            color: #56ccf2;
+        }
+        /* Contact Section */
+        .contact {
+            background-color: #2f80ed;
+            padding: 20px;
+            margin-top: 80px;
+        }
+        .contact h3, .contact p {
+            color: white;
+        }
+        .contact-form {
+            background-color: #56ccf2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        footer p {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Title Section -->
+    <h1 class="text-center">Space Mission Overview</h1>
+
+    <!-- Mission Information Section -->
+    <div class="mission-details">
+        <h3>Mission Details</h3>
+        <p>
+            1. Launch Date:
+            July 16, 1969
+            2. Mission Duration:
+            8 days, 3 hours, 18 minutes, 35 seconds
+            The mission lasted from July 16, 1969, to July 24, 1969.
+            3. Landing on the Moon:
+            July 20, 1969
+            The Lunar Module, called Eagle, landed on the Moon in the Sea of Tranquility.
+            4. Astronauts on Board:
+            Neil Armstrong (Commander)  First human to walk on the Moon.
+            Buzz Aldrin (Lunar Module Pilot)  Second human to walk on the Moon.
+            Michael Collins (Command Module Pilot) Remained in lunar orbit in the Command Module.
+            5. Spacecraft:
+            Command Module (CM): Columbia  It housed the astronauts during the flight to and from the Moon.
+            Lunar Module (LM): Eagle  Used for the descent to the Moon and return to lunar orbit.
+            6. Mission Objective:
+            The primary objective was to perform a crewed lunar landing and return safely to Earth. The astronauts were also tasked with collecting samples from the lunar surface and conducting experiments.
+            7. Historic Firsts:
+            Neil Armstrong's famous words: "That's one small step for [a] man, one giant leap for mankind," as he became the first person to step onto the lunar surface.
+            The crew spent approximately 2 hours and 15 minutes walking on the Moon and collected around 47.5 pounds (21.5 kg) of lunar material to bring back to Earth.
+            8. Return to Earth:
+            Apollo 11 splashed down in the Pacific Ocean on July 24, 1969, where the crew was safely recovered by the aircraft carrier USS Hornet.
+            9. Scientific Experiments:
+            The astronauts deployed several scientific instruments on the lunar surface, including a seismometer to measure moonquakes and a retroreflector that is still used today to reflect laser beams from Earth, allowing precise measurements of the distance to the Moon.
+            10. Impact on Space Exploration:
+            Apollo 11 was a monumental achievement in human space exploration and solidified NASA's role in space science. It paved the way for five more manned lunar landings between 1969 and 1972 under the Apollo program.
+            11. Global Impact:
+            The Moon landing was broadcast live to millions of people worldwide and is remembered as a unifying moment for humanity during a period of significant global tensions (the Cold War).
+            
+        </p>
+    </div>
+
+    <!-- Photos Section -->
+    <div class="photos-container">
+        <div class="photo-container">
+                            <img src="images/neil-armstrong.jpg" alt="Astronaut 1" class="passport-photo">
+            <span>Neil Armstrong</span>
+        </div>
+        <div class="photo-container">
+                            <img src="images/apollo-11-2.jpg" alt="Astronaut 2" class="passport-photo">
+            <span>Buzz Aldrin</span>
+        </div>
+        <div class="photo-container">
+                            <img src="images/apollo-11-3.jpg" alt="Astronaut 3" class="passport-photo">
+            <span>Michael Colline</span>
+        </div>
+        
+    </div>
+
+    <!-- YouTube Video Section -->
+    <div class="youtube-video">
+        <h3>Watch the Mission Trailer</h3>
+        <iframe src="https://www.youtube.com/embed/gg5Ncc9GODY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Space Mission. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
